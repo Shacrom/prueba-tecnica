@@ -2,20 +2,14 @@ import { useEffect, useState } from "react"
 import { getCards } from "../helpers/getCards";
 
 export const useFetchCards = (userId) => {
-    const [cards, setCards] = useState({
-        data: [],
-        loading: true
-    });
+  const [cards, setCards] = useState([]);
 
-    useEffect(() => {
-        getCards(userId)
-            .then(data => {
-                setCards({
-                    data: data,
-                    loading: false
-                });
-            })
-    }, [userId]);
+  useEffect(() => {
+    getCards(userId)
+      .then(data => {
+        setCards(data);
+      })
+  }, [userId]);
 
-    return cards;
+  return cards;
 }
